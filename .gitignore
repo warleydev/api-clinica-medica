@@ -22,3 +22,25 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+logs/
+
+application.properties
+application.yml
+
+pom.xml.tag
+pom.xml.releaseBackup
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+target/
+
+*.tmp
+*.swp
+*.bak
