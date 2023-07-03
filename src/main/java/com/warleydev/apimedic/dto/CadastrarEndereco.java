@@ -13,7 +13,7 @@ public record CadastrarEndereco(
         String bairro,
 
         @NotBlank(message = "Este campo é obrigatório")
-        @Pattern(regexp = "\\d{8}")
+        @Pattern(regexp = "\\d{8}", message = "Digite um CEP válido (8 caracteres).")
         String cep,
 
         @NotBlank(message = "Este campo é obrigatório")

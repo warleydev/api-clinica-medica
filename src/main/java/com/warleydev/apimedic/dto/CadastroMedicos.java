@@ -19,7 +19,7 @@ public record CadastroMedicos(
         String email,
 
         @NotBlank(message = "Este campo não pode estar vazio.")
-        @Pattern(regexp = "\\d{4,6}")
+        @Pattern(regexp = "\\d{4,6}", message = "Deve conter entre 4 e 6 caracteres.")
         String crm,
 
         @NotNull(message = "Este campo não pode ser nulo.")
