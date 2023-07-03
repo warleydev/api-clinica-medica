@@ -5,6 +5,7 @@ import com.warleydev.apimedic.dto.CadastroMedicos;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.repositories.MedicoRepository;
 import com.warleydev.apimedic.services.MedicoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class MedicoController {
     MedicoService service;
 
     @PostMapping
-    public ResponseEntity<CadastroMedicos> cadastrar(@RequestBody CadastroMedicos dto){
+    public ResponseEntity<CadastroMedicos> cadastrar(@RequestBody @Valid CadastroMedicos dto){
         service.save(new Medico(dto));
         return ResponseEntity.ok(dto);
     }
