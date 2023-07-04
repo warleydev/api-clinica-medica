@@ -1,6 +1,5 @@
 package com.warleydev.apimedic.dto;
 
-import com.warleydev.apimedic.entities.Endereco;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.validation.Valid;
