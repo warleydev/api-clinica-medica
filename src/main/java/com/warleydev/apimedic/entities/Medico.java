@@ -3,15 +3,13 @@ package com.warleydev.apimedic.entities;
 import com.warleydev.apimedic.dto.CadastroMedicos;
 import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Entity(name = "Medico")
 @Table(name = "medicos")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")

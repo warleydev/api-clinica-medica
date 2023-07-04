@@ -1,6 +1,7 @@
 package com.warleydev.apimedic.controllers;
 
 
+import com.warleydev.apimedic.dto.AtualizarMedico;
 import com.warleydev.apimedic.dto.BuscarMedicos;
 import com.warleydev.apimedic.dto.CadastroMedicos;
 import com.warleydev.apimedic.entities.Medico;
@@ -23,7 +24,7 @@ public class MedicoController {
 
     @PostMapping
     public ResponseEntity<CadastroMedicos> cadastrar(@RequestBody @Valid CadastroMedicos dto){
-        service.save(new Medico(dto));
+        service.salvar(new Medico(dto));
         return ResponseEntity.ok(dto);
     }
 
@@ -35,7 +36,13 @@ public class MedicoController {
             @RequestParam(defaultValue = "nome") String sortBy
     ){
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.Direction.valueOf(direction), sortBy);
-        return ResponseEntity.ok(service.searchAll(pageRequest));
+        return ResponseEntity.ok(service.buscarTodosMedicos(pageRequest));
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> atualizarMedico(@PathVariable Long id, @RequestBody AtualizarMedico medicoAtualizado){
+        service.atualizarMedico(id, medicoAtualizado);
+        return ResponseEntity.noContent().build();
     }
 
 }
