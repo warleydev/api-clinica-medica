@@ -18,6 +18,9 @@ public record CadastroMedicos(
         @Email(message = "Email inválido.")
         String email,
 
+        @NotBlank(message = "Este campo não pode estar vazio;")
+        String telefone,
+
         @NotBlank(message = "Este campo não pode estar vazio.")
         @Pattern(regexp = "\\d{4,6}", message = "Deve conter entre 4 e 6 caracteres.")
         String crm,
@@ -29,7 +32,7 @@ public record CadastroMedicos(
         CadastrarEndereco endereco) {
 
     public CadastroMedicos(Medico entidade) {
-        this(entidade.getNome(), entidade.getEmail(), entidade.getCrm(), entidade.getEspecialidade(), new CadastrarEndereco(entidade.getEndereco()));
+        this(entidade.getNome(), entidade.getEmail(), entidade.getTelefone(), entidade.getCrm(), entidade.getEspecialidade(), new CadastrarEndereco(entidade.getEndereco()));
     }
 
 }
