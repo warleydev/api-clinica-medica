@@ -1,4 +1,4 @@
-package com.warleydev.apimedic.dto;
+package com.warleydev.apimedic.dto.endereco;
 
 import com.warleydev.apimedic.entities.Endereco;
 import com.warleydev.apimedic.entities.Medico;

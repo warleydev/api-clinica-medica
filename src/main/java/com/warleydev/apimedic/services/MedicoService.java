@@ -1,6 +1,10 @@
 package com.warleydev.apimedic.services;
 
-import com.warleydev.apimedic.dto.*;
+import com.warleydev.apimedic.dto.endereco.CadastrarEndereco;
+import com.warleydev.apimedic.dto.endereco.DetalhesMedicos;
+import com.warleydev.apimedic.dto.medicos.AtualizarMedico;
+import com.warleydev.apimedic.dto.medicos.BuscarMedicos;
+import com.warleydev.apimedic.dto.medicos.CadastrarMedico;
 import com.warleydev.apimedic.entities.Endereco;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.repositories.MedicoRepository;

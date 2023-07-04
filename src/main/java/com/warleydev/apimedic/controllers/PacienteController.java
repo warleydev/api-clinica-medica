@@ -1,8 +1,9 @@
 package com.warleydev.apimedic.controllers;
 
-import com.warleydev.apimedic.dto.BuscarPacientes;
-import com.warleydev.apimedic.dto.CadastroPaciente;
-import com.warleydev.apimedic.dto.DetalhesPaciente;
+import com.warleydev.apimedic.dto.pacientes.AtualizarPaciente;
+import com.warleydev.apimedic.dto.pacientes.BuscarPacientes;
+import com.warleydev.apimedic.dto.pacientes.CadastroPaciente;
+import com.warleydev.apimedic.dto.pacientes.DetalhesPaciente;
 import com.warleydev.apimedic.entities.Paciente;
 import com.warleydev.apimedic.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class PacienteController {
     @Autowired
     private PacienteService service;
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<DetalhesPaciente> buscarPacienteDetalhadoPorId(@PathVariable Long id){
+        return ResponseEntity.ok(service.buscarPacienteDetalhadoPorId(id));
+    }
+
     @PostMapping
     public ResponseEntity<DetalhesPaciente> salvar(@RequestBody CadastroPaciente dto){
         Paciente entidade = new Paciente(dto);
@@ -40,6 +46,19 @@ public class PacienteController {
     ){
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.Direction.valueOf(direction), sortBy);
         return ResponseEntity.ok(service.buscandoTodosPacientes(pageRequest));
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DetalhesPaciente> atualizandoPaciente(@PathVariable Long id, @RequestBody AtualizarPaciente dto){
+
+        service.atualizarPaciente(id, dto);
+        return ResponseEntity.ok(buscarPacienteDetalhadoPorId(id).getBody());
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> excluirPaciente(@PathVariable Long id){
+        service.excluirPaciente(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

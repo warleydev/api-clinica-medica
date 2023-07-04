@@ -1,4 +1,4 @@
-package com.warleydev.apimedic.dto;
+package com.warleydev.apimedic.dto.medicos;
 
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.entities.enums.Especialidade;

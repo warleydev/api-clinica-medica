@@ -1,6 +1,6 @@
 package com.warleydev.apimedic.entities;
 
-import com.warleydev.apimedic.dto.CadastrarEndereco;
+import com.warleydev.apimedic.dto.endereco.CadastrarEndereco;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

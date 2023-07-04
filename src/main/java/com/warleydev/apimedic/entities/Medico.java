@@ -1,6 +1,6 @@
 package com.warleydev.apimedic.entities;
 
-import com.warleydev.apimedic.dto.CadastrarMedico;
+import com.warleydev.apimedic.dto.medicos.CadastrarMedico;
 import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.persistence.*;
 import lombok.*;
