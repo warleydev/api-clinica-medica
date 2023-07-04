@@ -19,8 +19,6 @@ k
 Wsrc/main/java/com/warleydev/apimedic/services/exceptions/ResourceNotFoundException.java,1\1\111da83889b35110a893897b7fa7f98eaab6dabe
 i
 9src/main/java/com/warleydev/apimedic/entities/Medico.java,3\7\37b4f3e5ecb4c759b1f57b810aea19aca014fbb9
-u
-Esrc/main/java/com/warleydev/apimedic/dto/medicos/CadastrarMedico.java,2\d\2d7bba065a8422cd561a7183f5b6ecaccb813058
 s
 Csrc/main/java/com/warleydev/apimedic/dto/medicos/BuscarMedicos.java,3\f\3faf046b6bee359a1347d78702bf6aeb440d36a6
 v
@@ -33,7 +31,5 @@ w
 Gsrc/main/java/com/warleydev/apimedic/dto/pacientes/BuscarPacientes.java,0\1\01b9ae0f30d1c18b9744cf36a3d3abba043bd145
 x
 Hsrc/main/java/com/warleydev/apimedic/dto/pacientes/DetalhesPaciente.java,d\b\db670d5c856e99de4b9b9233444ee5b974033911
-x
-Hsrc/main/java/com/warleydev/apimedic/dto/pacientes/CadastroPaciente.java,5\a\5a1a5c731bcb6bffd1d3163abfc2684a72cb8271
 w
 Gsrc/main/java/com/warleydev/apimedic/repositories/MedicoRepository.java,a\3\a35fe6047997333e1337cd04e30067e578c9bd5c

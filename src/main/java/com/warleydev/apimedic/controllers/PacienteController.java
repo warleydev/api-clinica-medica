@@ -6,6 +6,7 @@ import com.warleydev.apimedic.dto.pacientes.CadastroPaciente;
 import com.warleydev.apimedic.dto.pacientes.DetalhesPaciente;
 import com.warleydev.apimedic.entities.Paciente;
 import com.warleydev.apimedic.services.PacienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,7 +30,7 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<DetalhesPaciente> salvar(@RequestBody CadastroPaciente dto){
+    public ResponseEntity<DetalhesPaciente> salvar(@RequestBody @Valid CadastroPaciente dto){
         Paciente entidade = new Paciente(dto);
         service.salvar(entidade);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

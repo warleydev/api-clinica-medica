@@ -1,7 +1,7 @@
 package com.warleydev.apimedic.services;
 
 import com.warleydev.apimedic.dto.endereco.CadastrarEndereco;
-import com.warleydev.apimedic.dto.endereco.DetalhesMedicos;
+import com.warleydev.apimedic.dto.medicos.DetalhesMedicos;
 import com.warleydev.apimedic.dto.medicos.AtualizarMedico;
 import com.warleydev.apimedic.dto.medicos.BuscarMedicos;
 import com.warleydev.apimedic.dto.medicos.CadastrarMedico;

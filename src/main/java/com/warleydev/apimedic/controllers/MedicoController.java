@@ -4,7 +4,7 @@ package com.warleydev.apimedic.controllers;
 import com.warleydev.apimedic.dto.medicos.AtualizarMedico;
 import com.warleydev.apimedic.dto.medicos.BuscarMedicos;
 import com.warleydev.apimedic.dto.medicos.CadastrarMedico;
-import com.warleydev.apimedic.dto.endereco.DetalhesMedicos;
+import com.warleydev.apimedic.dto.medicos.DetalhesMedicos;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.services.MedicoService;
 import jakarta.validation.Valid;

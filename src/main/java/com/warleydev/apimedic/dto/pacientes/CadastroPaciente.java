@@ -9,19 +9,19 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record CadastroPaciente (
-        @NotBlank
+        @NotBlank(message = "Este campo não pode estar vazio.")
         String nome,
-        @NotBlank
-        @Email
+        @NotBlank(message = "Este campo não pode estar vazio.")
+        @Email(message = "Email inválido.")
         String email,
 
-        @NotBlank
+        @NotBlank(message = "Este campo não pode estar vazio;")
         String telefone,
-        @NotBlank
-        @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")
+        @NotBlank(message = "Este campo não pode estar vazio.")
+        @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}", message = "CPF inválido.")
         String cpf,
 
-        @NotNull
+        @NotNull(message = "Este campo não pode ser nulo.")
         @Valid
         CadastrarEndereco endereco
 ){
