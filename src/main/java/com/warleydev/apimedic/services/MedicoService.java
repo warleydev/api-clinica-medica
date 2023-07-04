@@ -38,7 +38,7 @@ public class MedicoService {
 
     @Transactional(readOnly = true)
     public Page<BuscarMedicos> buscarTodosMedicos(PageRequest pageRequest) {
-        return repository.findAll(pageRequest).map(x -> new BuscarMedicos(x));
+        return repository.findAllByAtivoTrue(pageRequest).map(x -> new BuscarMedicos(x));
     }
 
     @Transactional
@@ -51,6 +51,12 @@ public class MedicoService {
             throw new ResourceNotFoundException("Médico não encontrado! Id: "+id);
         }
 
+    }
+
+    @Transactional
+    public void excluirMedico(Long id){
+        Medico entidade = repository.getReferenceById(id);
+        entidade.setAtivo(false);
     }
 
 

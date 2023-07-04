@@ -30,6 +30,8 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Medico(CadastroMedicos dto) {
         nome = dto.nome();
         email = dto.email();
@@ -37,5 +39,6 @@ public class Medico {
         especialidade = dto.especialidade();
         endereco = new Endereco(dto.endereco());
         telefone = dto.telefone();
+        ativo = true;
     }
 }
