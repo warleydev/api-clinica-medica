@@ -1,5 +1,6 @@
 package com.warleydev.apimedic.dto;
 
+import com.warleydev.apimedic.entities.Paciente;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -23,6 +24,7 @@ public record CadastroPaciente (
         @Valid
         CadastrarEndereco endereco
 ){
-
-
+        public CadastroPaciente(Paciente entidade){
+                this(entidade.getNome(), entidade.getEmail(), entidade.getTelefone(), entidade.getCpf(), new CadastrarEndereco(entidade.getEndereco()));
+        }
 }

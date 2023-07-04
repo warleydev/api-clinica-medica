@@ -1,7 +1,6 @@
 package com.warleydev.apimedic.entities;
 
 import com.warleydev.apimedic.dto.CadastroPaciente;
-import com.warleydev.apimedic.dto.DadosCadastroPaciente;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,10 +34,10 @@ public class Paciente {
         this.email = dto.email();
         this.telefone = dto.telefone();
         this.cpf = dto.cpf();
-        this.endereco = new Endereco(dto.endereco());
+        this.endereco = new Endereco(dto    .endereco());
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
+    /*public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }
@@ -48,6 +47,6 @@ public class Paciente {
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
-    }
+    }*/
 }
 
