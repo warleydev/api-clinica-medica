@@ -1,9 +1,6 @@
 package com.warleydev.apimedic.services;
 
-import com.warleydev.apimedic.dto.AtualizarMedico;
-import com.warleydev.apimedic.dto.BuscarMedicos;
-import com.warleydev.apimedic.dto.CadastrarEndereco;
-import com.warleydev.apimedic.dto.CadastroMedicos;
+import com.warleydev.apimedic.dto.*;
 import com.warleydev.apimedic.entities.Endereco;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.repositories.MedicoRepository;
@@ -15,8 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
-
 @Service
 public class MedicoService {
 
@@ -25,15 +20,15 @@ public class MedicoService {
 
 
     @Transactional(readOnly = true)
-    public BuscarMedicos buscarPorId(Long id) {
-        return new BuscarMedicos(repository.findById(id).orElseThrow(
+    public DetalhesMedicos buscarPorId(Long id) {
+        return new DetalhesMedicos(repository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Médico não encontrado!")));
     }
 
     @Transactional
-    public CadastroMedicos salvar(Medico entidade) {
+    public CadastrarMedico salvar(Medico entidade) {
         entidade = repository.save(entidade);
-        return new CadastroMedicos(entidade);
+        return new CadastrarMedico(entidade);
     }
 
     @Transactional(readOnly = true)

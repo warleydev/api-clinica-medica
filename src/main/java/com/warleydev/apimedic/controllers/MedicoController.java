@@ -3,9 +3,9 @@ package com.warleydev.apimedic.controllers;
 
 import com.warleydev.apimedic.dto.AtualizarMedico;
 import com.warleydev.apimedic.dto.BuscarMedicos;
-import com.warleydev.apimedic.dto.CadastroMedicos;
+import com.warleydev.apimedic.dto.CadastrarMedico;
+import com.warleydev.apimedic.dto.DetalhesMedicos;
 import com.warleydev.apimedic.entities.Medico;
-import com.warleydev.apimedic.repositories.MedicoRepository;
 import com.warleydev.apimedic.services.MedicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("medicos")
@@ -23,15 +26,17 @@ public class MedicoController {
     MedicoService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<BuscarMedicos> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<DetalhesMedicos> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-
     @PostMapping
-    public ResponseEntity<CadastroMedicos> cadastrar(@RequestBody @Valid CadastroMedicos dto){
-        service.salvar(new Medico(dto));
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<DetalhesMedicos> cadastrar(@RequestBody @Valid CadastrarMedico dto){
+        Medico entidade = new Medico(dto);
+        service.salvar(entidade);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(entidade.getId()).toUri();
+        return ResponseEntity.ok(new DetalhesMedicos(entidade));
     }
 
     @GetMapping

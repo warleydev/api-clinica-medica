@@ -1,6 +1,6 @@
 package com.warleydev.apimedic.entities;
 
-import com.warleydev.apimedic.dto.CadastroMedicos;
+import com.warleydev.apimedic.dto.CadastrarMedico;
 import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,7 +32,7 @@ public class Medico {
 
     private Boolean ativo;
 
-    public Medico(CadastroMedicos dto) {
+    public Medico(CadastrarMedico dto) {
         nome = dto.nome();
         email = dto.email();
         crm = dto.crm();

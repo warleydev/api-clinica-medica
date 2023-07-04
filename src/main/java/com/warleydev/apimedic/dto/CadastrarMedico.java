@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record CadastroMedicos(
+public record CadastrarMedico(
 
         @NotBlank(message = "Este campo não pode estar vazio.")
         String nome,
@@ -30,7 +30,7 @@ public record CadastroMedicos(
         @NotNull @Valid
         CadastrarEndereco endereco) {
 
-    public CadastroMedicos(Medico entidade) {
+    public CadastrarMedico(Medico entidade) {
         this(entidade.getNome(), entidade.getEmail(), entidade.getTelefone(), entidade.getCrm(), entidade.getEspecialidade(), new CadastrarEndereco(entidade.getEndereco()));
     }
 
