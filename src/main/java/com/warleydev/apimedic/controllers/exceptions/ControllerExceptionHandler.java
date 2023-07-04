@@ -1,5 +1,6 @@
 package com.warleydev.apimedic.controllers.exceptions;
 
+import com.warleydev.apimedic.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,17 @@ public class ControllerExceptionHandler {
         err.setError("Erro de validação!");
 
         e.getBindingResult().getFieldErrors().forEach(f -> err.addError(f.getField(), f.getDefaultMessage()));
+        return ResponseEntity.status(err.getStatus()).body(err);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<StandardError> notFound(ResourceNotFoundException e, HttpServletRequest request){
+        StandardError err = new StandardError();
+        err.setError("Não encontrado.");
+        err.setMessage(e.getMessage());
+        err.setTimestamp(Instant.now());
+        err.setPath(request.getRequestURI());
+        err.setStatus(HttpStatus.NOT_FOUND.value());
         return ResponseEntity.status(err.getStatus()).body(err);
     }
 

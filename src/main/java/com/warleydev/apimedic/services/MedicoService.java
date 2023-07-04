@@ -7,6 +7,7 @@ import com.warleydev.apimedic.dto.CadastroMedicos;
 import com.warleydev.apimedic.entities.Endereco;
 import com.warleydev.apimedic.entities.Medico;
 import com.warleydev.apimedic.repositories.MedicoRepository;
+import com.warleydev.apimedic.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,58 +25,67 @@ public class MedicoService {
 
 
     @Transactional(readOnly = true)
-    public BuscarMedicos buscarPorId(Long id){
+    public BuscarMedicos buscarPorId(Long id) {
         return new BuscarMedicos(repository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Médico não encontrado!")));
+                () -> new ResourceNotFoundException("Médico não encontrado!")));
     }
 
     @Transactional
-    public CadastroMedicos salvar(Medico entidade){
+    public CadastroMedicos salvar(Medico entidade) {
         entidade = repository.save(entidade);
         return new CadastroMedicos(entidade);
     }
 
     @Transactional(readOnly = true)
-    public Page<BuscarMedicos> buscarTodosMedicos(PageRequest pageRequest){
+    public Page<BuscarMedicos> buscarTodosMedicos(PageRequest pageRequest) {
         return repository.findAll(pageRequest).map(x -> new BuscarMedicos(x));
     }
 
     @Transactional
-    public void atualizarMedico(Long id, AtualizarMedico medicoAtualizado){
-        if (repository.existsById(id)){
+    public void atualizarMedico(Long id, AtualizarMedico medicoAtualizado) {
+        try{
             Medico entidade = repository.getReferenceById(id);
             atualizarDadosMedico(entidade, medicoAtualizado);
         }
-        else throw new EntityNotFoundException("aaaaaaaaaaaaaaaaaaaa");
+        catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException("Médico não encontrado! Id: "+id);
+        }
+
     }
 
 
-    public void atualizarDadosMedico(Medico entidade, AtualizarMedico dto){
-        if (dto.nome() != null){
+    public void atualizarDadosMedico(Medico entidade, AtualizarMedico dto) {
+        if (dto.nome() != null) {
             entidade.setNome(dto.nome());
         }
-        if (dto.telefone() != null){
+        if (dto.telefone() != null) {
             entidade.setTelefone(dto.telefone());
         }
-        if (dto.endereco() != null){
+        if (dto.endereco() != null) {
             atualizarDadosEndereco(entidade.getEndereco(), dto.endereco());
         }
     }
 
-    public void atualizarDadosEndereco(Endereco entidade, CadastrarEndereco dto){
-        if (dto.logradouro() != null){
+    public void atualizarDadosEndereco(Endereco entidade, CadastrarEndereco dto) {
+        if (dto.logradouro() != null) {
             entidade.setLogradouro(dto.logradouro());
-        }if (dto.cep() != null){
+        }
+        if (dto.cep() != null) {
             entidade.setCep(dto.cep());
-        }if (dto.uf() != null){
+        }
+        if (dto.uf() != null) {
             entidade.setUf(dto.uf());
-        }if (dto.bairro() != null){
+        }
+        if (dto.bairro() != null) {
             entidade.setBairro(dto.bairro());
-        }if (dto.complemento() != null){
+        }
+        if (dto.complemento() != null) {
             entidade.setComplemento(dto.complemento());
-        }if (dto.cidade() != null){
+        }
+        if (dto.cidade() != null) {
             entidade.setCidade(dto.cidade());
-        }if (dto.numero() != null){
+        }
+        if (dto.numero() != null) {
             entidade.setNumero(dto.numero());
         }
     }

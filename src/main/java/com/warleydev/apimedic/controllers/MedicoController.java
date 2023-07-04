@@ -22,6 +22,12 @@ public class MedicoController {
     @Autowired
     MedicoService service;
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<BuscarMedicos> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.ok(service.buscarPorId(id));
+    }
+
+
     @PostMapping
     public ResponseEntity<CadastroMedicos> cadastrar(@RequestBody @Valid CadastroMedicos dto){
         service.salvar(new Medico(dto));
