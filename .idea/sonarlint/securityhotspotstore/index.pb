@@ -1,8 +1,6 @@
 
 m
 =src/main/java/com/warleydev/apimedic/ApiMedicApplication.java,a\d\adb559f4026ec924143cdc7b89fe10d9964d80a2
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 ~
 Nsrc/main/java/com/warleydev/apimedic/controllers/exceptions/StandardError.java,1\6\165447beadadb6f6e876c9bbb8024444cb6cf81e
 }
