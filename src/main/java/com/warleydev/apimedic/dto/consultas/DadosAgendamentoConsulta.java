@@ -1,5 +1,6 @@
 package com.warleydev.apimedic.dto.consultas;
 
+import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +15,9 @@ public record DadosAgendamentoConsulta(
 
         @NotNull
         @Future
-        LocalDateTime data
+        LocalDateTime data,
+
+        Especialidade especialidade
 
 ) {
 }

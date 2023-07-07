@@ -27,12 +27,8 @@ w
 Gsrc/main/java/com/warleydev/apimedic/dto/pacientes/BuscarPacientes.java,0\1\01b9ae0f30d1c18b9744cf36a3d3abba043bd145
 y
 Isrc/main/java/com/warleydev/apimedic/dto/pacientes/AtualizarPaciente.java,b\2\b263d4286c58d6a7b92a75c0fe61edc9d869cadc
-w
-Gsrc/main/java/com/warleydev/apimedic/repositories/MedicoRepository.java,a\3\a35fe6047997333e1337cd04e30067e578c9bd5c
 y
 Isrc/main/java/com/warleydev/apimedic/repositories/PacienteRepository.java,d\3\d325c716745ac4544f59c434c0b6e57520212065
-k
-;src/main/java/com/warleydev/apimedic/entities/Paciente.java,1\8\187bcf9af026e2899bc92e265e99434faba3541a
 p
 @src/main/java/com/warleydev/apimedic/services/MedicoService.java,f\3\f3072214775d64e7fa6749d35d7145a05bfc7cef
 v
