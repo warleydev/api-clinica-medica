@@ -7,7 +7,9 @@ import com.warleydev.apimedic.repositories.ConsultaRepository;
 import com.warleydev.apimedic.repositories.MedicoRepository;
 import com.warleydev.apimedic.repositories.PacienteRepository;
 import com.warleydev.apimedic.services.exceptions.ResourceNotFoundException;
+import com.warleydev.apimedic.services.utils.MedicoEstaAtivo;
 import com.warleydev.apimedic.services.utils.ValidarAntecedencia;
+import com.warleydev.apimedic.services.utils.ValidarHorarioFuncionamentoClinica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +28,20 @@ public class ConsultaService {
 
     @Transactional
     public void agendarConsulta(DadosAgendamentoConsulta dto){
+        MedicoEstaAtivo medicoEstaAtivo = new MedicoEstaAtivo();
+        medicoEstaAtivo.validar(dto.idMedico());
+        ValidarAntecedencia.validar(dto.data());
+        ValidarHorarioFuncionamentoClinica.validar(dto.data());
+
         if (!pacienteRepository.existsById(dto.idPaciente())){
             throw new ResourceNotFoundException("Paciente não encontrado! Id: " + dto.idPaciente());
         }
+
         if (dto.idMedico() != null && !medicoRepository.existsById(dto.idMedico())){
             throw new ResourceNotFoundException("Médico não encontrado! Id: " + dto.idMedico());
         }
 
-        var medico = medicoRepository.findById(dto.idMedico()).get();
+        var medico = escolhaDeMedico(dto);
         var paciente = pacienteRepository.getReferenceById(dto.idPaciente());
         Consulta consulta = new Consulta(null, medico, paciente, dto.data());
         consultaRepository.save(consulta);

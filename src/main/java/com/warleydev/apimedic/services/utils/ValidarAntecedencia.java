@@ -6,7 +6,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class ValidarAntecedencia {
-    public void validar(LocalDateTime data){
+    public static void validar(LocalDateTime data){
         var agora = LocalDateTime.now();
         var diferencaEmMinutos = Duration.between(agora, data).toMinutes();
         if (diferencaEmMinutos < 30){

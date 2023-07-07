@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class ValidarHorarioFuncionamentoClinica {
 
-    public void validar(LocalDateTime data){
+    public static void validar(LocalDateTime data){
 
         var domingo = data.getDayOfWeek().equals(DayOfWeek.SUNDAY);
         var antesDeAbrir = data.getHour() < 7;
