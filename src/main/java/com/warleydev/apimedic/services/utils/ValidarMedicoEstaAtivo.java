@@ -3,9 +3,13 @@ package com.warleydev.apimedic.services.utils;
 import com.warleydev.apimedic.dto.consultas.DadosAgendamentoConsulta;
 import com.warleydev.apimedic.repositories.MedicoRepository;
 import com.warleydev.apimedic.services.exceptions.InactiveException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class MedicoEstaAtivo {
+@Component
+public class ValidarMedicoEstaAtivo implements ValidarAgendamentoConsulta{
 
+    @Autowired
     private MedicoRepository repository;
 
     public void validar(DadosAgendamentoConsulta dto){

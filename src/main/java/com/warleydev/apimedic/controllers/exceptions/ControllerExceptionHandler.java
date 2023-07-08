@@ -1,5 +1,7 @@
 package com.warleydev.apimedic.controllers.exceptions;
 
+import com.warleydev.apimedic.services.exceptions.DateException;
+import com.warleydev.apimedic.services.exceptions.InactiveException;
 import com.warleydev.apimedic.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -37,5 +39,28 @@ public class ControllerExceptionHandler {
         err.setStatus(HttpStatus.NOT_FOUND.value());
         return ResponseEntity.status(err.getStatus()).body(err);
     }
+    @ExceptionHandler(DateException.class)
+    public ResponseEntity<StandardError> notFound(DateException e, HttpServletRequest request){
+        StandardError err = new StandardError();
+        err.setError("Data inacessível.");
+        err.setMessage(e.getMessage());
+        err.setTimestamp(Instant.now());
+        err.setPath(request.getRequestURI());
+        err.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        return ResponseEntity.status(err.getStatus()).body(err);
+    }
+
+    @ExceptionHandler(InactiveException.class)
+    public ResponseEntity<StandardError> notFound(InactiveException e, HttpServletRequest request){
+        StandardError err = new StandardError();
+        err.setError("Inativo.");
+        err.setMessage(e.getMessage());
+        err.setTimestamp(Instant.now());
+        err.setPath(request.getRequestURI());
+        err.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        return ResponseEntity.status(err.getStatus()).body(err);
+    }
+
+
 
 }

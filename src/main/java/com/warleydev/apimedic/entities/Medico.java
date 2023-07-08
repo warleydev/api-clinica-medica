@@ -1,9 +1,13 @@
 package com.warleydev.apimedic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.warleydev.apimedic.dto.medicos.CadastrarMedico;
 import com.warleydev.apimedic.entities.enums.Especialidade;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity(name = "Medico")
@@ -31,6 +35,10 @@ public class Medico {
     private Endereco endereco;
 
     private Boolean ativo;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Consulta> consultas = new ArrayList<>();
 
     public Medico(CadastrarMedico dto) {
         nome = dto.nome();

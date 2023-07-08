@@ -3,9 +3,13 @@ package com.warleydev.apimedic.services.utils;
 import com.warleydev.apimedic.dto.consultas.DadosAgendamentoConsulta;
 import com.warleydev.apimedic.repositories.ConsultaRepository;
 import com.warleydev.apimedic.services.exceptions.DateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ConsultaMesmoDia {
+@Component
+public class ValidarConsultaMesmoDia implements ValidarAgendamentoConsulta{
 
+    @Autowired
     ConsultaRepository repository;
 
     public void validar(DadosAgendamentoConsulta dto){

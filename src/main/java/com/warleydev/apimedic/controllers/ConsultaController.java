@@ -18,13 +18,14 @@ import java.net.URI;
 public class ConsultaController {
 
     @Autowired
-    ConsultaService service;
+    private ConsultaService service;
 
     @PostMapping
     public ResponseEntity<DetalhesConsulta> agendar(@RequestBody DadosAgendamentoConsulta dto){
         System.out.println(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id")
                 .buildAndExpand(1L).toUri();
+        service.agendarConsulta(dto);
         return ResponseEntity.created(uri).body(new DetalhesConsulta(null, dto.idMedico(), dto.idPaciente(), dto.data()));
     }
 }

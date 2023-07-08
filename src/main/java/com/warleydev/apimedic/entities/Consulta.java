@@ -1,10 +1,8 @@
 package com.warleydev.apimedic.entities;
 
 
-import com.warleydev.apimedic.dto.consultas.DadosAgendamentoConsulta;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.context.annotation.Lazy;
 
 import java.time.LocalDateTime;
 
