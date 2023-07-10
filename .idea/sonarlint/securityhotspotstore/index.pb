@@ -19,10 +19,6 @@ w
 Gsrc/main/java/com/warleydev/apimedic/dto/pacientes/BuscarPacientes.java,0\1\01b9ae0f30d1c18b9744cf36a3d3abba043bd145
 y
 Isrc/main/java/com/warleydev/apimedic/dto/pacientes/AtualizarPaciente.java,b\2\b263d4286c58d6a7b92a75c0fe61edc9d869cadc
-v
-Fsrc/main/java/com/warleydev/apimedic/controllers/MedicoController.java,e\1\e1bf8717d8898d12d4cddba68297988396843e40
-x
-Hsrc/main/java/com/warleydev/apimedic/controllers/PacienteController.java,3\7\378bba4809e9651f9c3dbd43761023df42166e8a
 u
 Esrc/main/java/com/warleydev/apimedic/dto/medicos/CadastrarMedico.java,2\d\2d7bba065a8422cd561a7183f5b6ecaccb813058
 x
@@ -31,8 +27,6 @@ x
 Hsrc/main/java/com/warleydev/apimedic/dto/autenticacao/DadosTokenJWT.java,d\1\d16f9e2acbaf1e17534828298b10f81058da31bb
 |
 Lsrc/main/java/com/warleydev/apimedic/dto/autenticacao/DadosAutenticacao.java,f\4\f4dfd37f4dd9559928416a47406dd33bdc0f5653
-w
-Gsrc/main/java/com/warleydev/apimedic/config/SecurityConfigurations.java,2\e\2ec3f141c5d02507467c861c85e7132f731e9f29
 o
 ?src/main/java/com/warleydev/apimedic/config/SecurityFilter.java,8\b\8b4d6e6da640c983b3d1698d16856ada30d1e36c
 

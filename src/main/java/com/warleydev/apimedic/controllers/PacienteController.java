@@ -6,6 +6,7 @@ import com.warleydev.apimedic.dto.pacientes.CadastroPaciente;
 import com.warleydev.apimedic.dto.pacientes.DetalhesPaciente;
 import com.warleydev.apimedic.entities.Paciente;
 import com.warleydev.apimedic.services.PacienteService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,8 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/pacientes")
+@SecurityRequirement(name = "bearer-key")
+
 public class PacienteController {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.warleydev.apimedic.controllers;
 import com.warleydev.apimedic.dto.consultas.DadosAgendamentoConsulta;
 import com.warleydev.apimedic.dto.consultas.DetalhesConsulta;
 import com.warleydev.apimedic.services.ConsultaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/consultas")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 
     @Autowired
